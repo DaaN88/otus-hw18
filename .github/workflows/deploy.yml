@@ -1,0 +1,25 @@
+name: "Otus hw17"
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  clone_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+  install_docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: set_up_docker_buildx
+        uses: docker/setup-buildx-action@v2
+
+  docker_compose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build_docker
+        run: docker-compose build

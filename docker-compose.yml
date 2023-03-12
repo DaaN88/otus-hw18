@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-  app-hw17:
+  app-hw18:
     build:
       dockerfile: Dockerfile
       context: ./
     image: otus-homework16
-    container_name: otus-hw17
+    container_name: otus-hw18
     env_file:
       - .env
     restart: unless-stopped
@@ -18,9 +18,9 @@ services:
     networks:
       - otus
 
-  nginx-hw17:
+  nginx-hw18:
     image: nginx:alpine
-    container_name: nginx-hw17
+    container_name: nginx-hw18
     restart: unless-stopped
     ports:
       - '127.0.0.1:8080:80'
@@ -30,9 +30,9 @@ services:
     networks:
       - otus
 
-  db-hw17:
+  db-hw18:
     image: mysql:8.0.28
-    container_name: db-hw17
+    container_name: db-hw18
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -46,19 +46,19 @@ services:
     networks:
       - otus
 
-  phpmyadminer-hw17:
+  phpmyadminer-hw18:
     image: adminer:standalone
-    container_name: phpmyadminer-hw17
+    container_name: phpmyadminer-hw18
     ports:
       - '9991:8080'
     depends_on:
-      - db-hw17
+      - db-hw18
     networks:
       - otus
 
-  rabbitmq-hw17:
+  rabbitmq-hw18:
     image: rabbitmq:3-management-alpine
-    container_name: rabbitmq-hw17
+    container_name: rabbitmq-hw18
     ports:
       - "5672:5672"
       - "15672:15672"
