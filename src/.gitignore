@@ -1,0 +1,10 @@
+vendor
+vendor2
+.env
+node_modules
+build
+compiled
+.idea
+composer.lock
+volumes/
+vendor/
