@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
   install_docker:
+    needs: clone_project
     runs-on: ubuntu-latest
     steps:
       - name: set_up_docker_buildx
