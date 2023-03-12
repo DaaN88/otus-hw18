@@ -12,8 +12,8 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v3
       - name: build_docker
-        uses: ./
-        with:
-          compose-file: "./docker-compose.yml"
-        env:
-          APP_ENV: ${{ env.APP_ENV }}
+        run: |
+          touch .env
+          echo "${{ env.APP_ENV }}" > .env
+      - name: build docker
+        run: docker-compose build
