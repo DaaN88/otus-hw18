@@ -17,13 +17,11 @@ jobs:
           echo "${{ env.APP_ENV }}" > .env
       - name: build docker
         run: docker-compose build
-        
-  remote_server:
-      name: Run command on remote server
-      uses: D3rHase/ssh-command-action@v0.2.2
-      with:
-        host: ${{secrets.SSH_HOST}}
-        user: ${{secrets.SSH_USER}}
-        private_key: ${{secrets.SSH_PRIVATE_KEY}}
-        command: |
-          echo 'we are on the server'
+      - name: Run command on remote server
+        uses: D3rHase/ssh-command-action@v0.2.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          user: ${{secrets.SSH_USER}}
+          private_key: ${{secrets.SSH_PRIVATE_KEY}}
+          command: |
+            echo 'we are on the server'
