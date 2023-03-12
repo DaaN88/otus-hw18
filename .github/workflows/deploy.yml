@@ -14,4 +14,4 @@ jobs:
       - name: build_docker
         run: docker-compose build
         env:
-          APP_ENV: Otus_hw18
+          APP_ENV: ${{ env.APP_ENV }}
