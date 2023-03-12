@@ -47,7 +47,7 @@
 ![img_7.png](readme-imgs/img_7.png)  
 
 ### Проверка работы
-- Работу приложения можно проверить из документации API - ```http://localhost:8010/swagge```
+- Работу приложения можно проверить из документации API - ```http://localhost:8010/swagger```
 - Нужно сначала авторизоваться
 ![img_8.png](readme-imgs/img_8.png)  
 ![img_9.png](readme-imgs/img_9.png)  
