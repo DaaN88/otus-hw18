@@ -26,4 +26,5 @@ jobs:
           port: ${{ secrets.PORT }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            echo 'we are on the server'
+            cd ${{ secrets.PROJECT_FOLDER }}
+            ls -la
