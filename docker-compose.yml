@@ -1,4 +1,4 @@
-version: "Compose specification"
+version: "3.8"
 
 services:
   app-hw18:
