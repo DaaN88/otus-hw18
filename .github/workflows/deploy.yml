@@ -28,7 +28,8 @@ jobs:
             docker-compose up -d
             ls -la
         env:
-          APP_NAME: ${{ env.APP_NAME }}APP_ENV=$APP_ENV
+          APP_NAME: ${{ env.APP_NAME }}
+          APP_ENV: ${{ env.APP_ENV }}
           APP_KEY: ${{ env.APP_KEY }}
           APP_DOWN: ${{ env.APP_DOWN }}
           APP_DEBUG: ${{ env.APP_DEBUG }}
@@ -47,7 +48,7 @@ jobs:
           SERVER_NAME: ${{ env.APP_SERVER_NAME }}
           SERVER_PORT: ${{ env.APP_SERVER_PORT }}
           SERVER_USER: ${{ env.APP_SERVER_USER }}
-          SERVER_PASSWORD: ${{ env.$APP_SERVER_PASSWORD }}
+          SERVER_PASSWORD: ${{ env.APP_SERVER_PASSWORD }}
           APPLICATION_DIR: ${{ env.APP_APPLICATION_DIR }}
           APPLICATION_PATH: ${{ env.APP_APPLICATION_PATH }}
           RABBITMQ_HOST: ${{ env.APP_RABBITMQ_HOST }}
