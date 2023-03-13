@@ -30,31 +30,31 @@ jobs:
         env:
           APP_NAME: ${{ env.APP_NAME }}
           APP_ENV: ${{ env.APP_ENV }}
-          APP_KEY: ${{ secret.APP_KEY }}
+          APP_KEY: ${{ secrets.APP_KEY }}
           APP_DOWN: ${{ env.APP_DOWN }}
           APP_DEBUG: ${{ env.APP_DEBUG }}
           APP_URL: ${{ env.APP_URL }}
           DB_CONNECTION: ${{ env.APP_DB_CONNECTION }}
           DB_HOST: ${{ env.APP_DB_HOST }}
           DB_PORT: ${{ env.APP_DB_PORT }}
-          DB_DATABASE: ${{ secret.APP_DB_DATABASE }}
-          DB_USERNAME: ${{ secret.APP_DB_USERNAME }}
-          DB_PASSWORD: ${{ secret.APP_DB_PASSWORD }}
+          DB_DATABASE: ${{ secrets.APP_DB_DATABASE }}
+          DB_USERNAME: ${{ secrets.APP_DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.APP_DB_PASSWORD }}
           DB_CHARSET: ${{ env.APP_DB_CHARSET }}
           DB_COLLATION: ${{ env.APP_DB_COLLATION }}
-          PROD_SERVER: ${{ secret.APP_PROD_SERVER }}
-          PROD_PORT: ${{ secret.APP_PROD_PORT }}
-          PROD_USER: ${{ secret.APP_PROD_USER }}
-          SERVER_NAME: ${{ secret.APP_SERVER_NAME }}
-          SERVER_PORT: ${{ secret.APP_SERVER_PORT }}
+          PROD_SERVER: ${{ secrets.APP_PROD_SERVER }}
+          PROD_PORT: ${{ secrets.APP_PROD_PORT }}
+          PROD_USER: ${{ secrets.APP_PROD_USER }}
+          SERVER_NAME: ${{ secrets.APP_SERVER_NAME }}
+          SERVER_PORT: ${{ secrets.APP_SERVER_PORT }}
           SERVER_USER: ${{ env.APP_SERVER_USER }}
-          SERVER_PASSWORD: ${{ secret.APP_SERVER_PASSWORD }}
-          APPLICATION_DIR: ${{ secret.APP_APPLICATION_DIR }}
-          APPLICATION_PATH: ${{ secret.APP_APPLICATION_PATH }}
+          SERVER_PASSWORD: ${{ secrets.APP_SERVER_PASSWORD }}
+          APPLICATION_DIR: ${{ secrets.APP_APPLICATION_DIR }}
+          APPLICATION_PATH: ${{ secrets.APP_APPLICATION_PATH }}
           RABBITMQ_HOST: ${{ env.APP_RABBITMQ_HOST }}
           RABBITMQ_PORT: ${{ env.APP_RABBITMQ_PORT }}
-          RABBITMQ_USERNAME: ${{ secret.APP_RABBITMQ_USERNAME }}
-          RABBITMQ_PASSWORD: ${{ secret.APP_RABBITMQ_PASSWORD }}
+          RABBITMQ_USERNAME: ${{ secrets.APP_RABBITMQ_USERNAME }}
+          RABBITMQ_PASSWORD: ${{ secrets.APP_RABBITMQ_PASSWORD }}
           RABBITMQ_EXCHANGE: ${{ env.APP_RABBITMQ_EXCHANGE }}
           RABBITMQ_EXCHANGE_TYPE: ${{ env.APP_RABBITMQ_EXCHANGE_TYPE }}
           QUEUE_NAME: ${{ env.APP_QUEUE_NAME }}
