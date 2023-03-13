@@ -11,12 +11,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3
-      - name: build_docker
-        run: |
-          touch .env
-          echo "${{ env.APP_ENV }}" > .env
-      - name: build docker
-        run: docker-compose build
       - name: Run command on remote server
         uses: appleboy/ssh-action@v0.1.8
         with:
