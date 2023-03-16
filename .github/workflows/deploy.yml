@@ -11,22 +11,22 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3
-      - name: Run command on remote server
-        uses: appleboy/ssh-action@v0.1.8
+        
+      - name: Login to GitHub Container Registry
+        id: login
+        uses: docker/login-action@v1
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-            cd ${{ secrets.PROJECT_FOLDER }}
-            git checkout main
-            git pull origin main
-            docker-compose down
-            docker-compose build
-            docker-compose up -d
-            ls -la
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GIT_DOCKER_TOKEN }}
+      
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
         env:
           APP_NAME: ${{ env.APP_NAME }}
           APP_ENV: ${{ env.APP_ENV }}
@@ -59,3 +59,15 @@ jobs:
           RABBITMQ_EXCHANGE_TYPE: ${{ env.APP_RABBITMQ_EXCHANGE_TYPE }}
           QUEUE_NAME: ${{ env.APP_QUEUE_NAME }}
           QUEUE_ROUTING_KEY: ${{ env.APP_QUEUE_ROUTING_KEY }}
+      
+      - name: Run command on remote server
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            cd ${{ secrets.PROJECT_FOLDER }}
+            ls -la
