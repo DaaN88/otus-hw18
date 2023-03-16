@@ -8,9 +8,7 @@ on:
 jobs:
   clone_project:
     runs-on: ubuntu-latest
-    environment: 
-      name: env
-      url: https://github.com
+    environment: env
     steps:
       - name: checkout code
         uses: actions/checkout@v3
@@ -19,6 +17,12 @@ jobs:
         run: |
           echo ${{ env.env.REGISTRY }}
           echo ${{ env.env.APP_NAME }}
+          echo ${{ env.REGISTRY }}
+          echo ${{ env.APP_NAME }}
+          echo ${{ vars.env.REGISTRY }}
+          echo ${{ vars.env.APP_NAME }}
+          echo ${{ vars.REGISTRY }}
+          echo ${{ vars.APP_NAME }}
         
       - name: Login to GitHub Container Registry
         id: login
