@@ -14,6 +14,11 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3
+      
+      - name: check env
+        run: |
+          echo ${{ env.env.REGISTRY }}
+          echo ${{ env.env.APP_NAME }}
         
       - name: Login to GitHub Container Registry
         id: login
