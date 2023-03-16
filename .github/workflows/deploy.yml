@@ -24,7 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ env.APP_NAME }}
+          images: ${{ vars.REGISTRY }}/${{ vars.APP_NAME }}
           flavor: |
             latest=true
           tags: |
@@ -43,37 +43,37 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
         env:
-          APP_NAME: ${{ env.APP_NAME }}
-          APP_ENV: ${{ env.APP_ENV }}
+          APP_NAME: ${{ vars.APP_NAME }}
+          APP_ENV: ${{ vars.APP_ENV }}
           APP_KEY: ${{ secrets.APP_KEY }}
-          APP_DOWN: ${{ env.APP_DOWN }}
-          APP_DEBUG: ${{ env.APP_DEBUG }}
-          APP_URL: ${{ env.APP_URL }}
-          DB_CONNECTION: ${{ env.APP_DB_CONNECTION }}
-          DB_HOST: ${{ env.APP_DB_HOST }}
-          DB_PORT: ${{ env.APP_DB_PORT }}
+          APP_DOWN: ${{ vars.APP_DOWN }}
+          APP_DEBUG: ${{ vars.APP_DEBUG }}
+          APP_URL: ${{ vars.APP_URL }}
+          DB_CONNECTION: ${{ vars.APP_DB_CONNECTION }}
+          DB_HOST: ${{ vars.APP_DB_HOST }}
+          DB_PORT: ${{ vars.APP_DB_PORT }}
           DB_DATABASE: ${{ secrets.APP_DB_DATABASE }}
           DB_USERNAME: ${{ secrets.APP_DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.APP_DB_PASSWORD }}
-          DB_CHARSET: ${{ env.APP_DB_CHARSET }}
-          DB_COLLATION: ${{ env.APP_DB_COLLATION }}
+          DB_CHARSET: ${{ vars.APP_DB_CHARSET }}
+          DB_COLLATION: ${{ vars.APP_DB_COLLATION }}
           PROD_SERVER: ${{ secrets.APP_PROD_SERVER }}
           PROD_PORT: ${{ secrets.APP_PROD_PORT }}
           PROD_USER: ${{ secrets.APP_PROD_USER }}
           SERVER_NAME: ${{ secrets.APP_SERVER_NAME }}
           SERVER_PORT: ${{ secrets.APP_SERVER_PORT }}
-          SERVER_USER: ${{ env.APP_SERVER_USER }}
+          SERVER_USER: ${{ vars.APP_SERVER_USER }}
           SERVER_PASSWORD: ${{ secrets.APP_SERVER_PASSWORD }}
           APPLICATION_DIR: ${{ secrets.APP_APPLICATION_DIR }}
           APPLICATION_PATH: ${{ secrets.APP_APPLICATION_PATH }}
-          RABBITMQ_HOST: ${{ env.APP_RABBITMQ_HOST }}
-          RABBITMQ_PORT: ${{ env.APP_RABBITMQ_PORT }}
+          RABBITMQ_HOST: ${{ vars.APP_RABBITMQ_HOST }}
+          RABBITMQ_PORT: ${{ vars.APP_RABBITMQ_PORT }}
           RABBITMQ_USERNAME: ${{ secrets.APP_RABBITMQ_USERNAME }}
           RABBITMQ_PASSWORD: ${{ secrets.APP_RABBITMQ_PASSWORD }}
-          RABBITMQ_EXCHANGE: ${{ env.APP_RABBITMQ_EXCHANGE }}
-          RABBITMQ_EXCHANGE_TYPE: ${{ env.APP_RABBITMQ_EXCHANGE_TYPE }}
-          QUEUE_NAME: ${{ env.APP_QUEUE_NAME }}
-          QUEUE_ROUTING_KEY: ${{ env.APP_QUEUE_ROUTING_KEY }}
+          RABBITMQ_EXCHANGE: ${{ vars.APP_RABBITMQ_EXCHANGE }}
+          RABBITMQ_EXCHANGE_TYPE: ${{ vars.APP_RABBITMQ_EXCHANGE_TYPE }}
+          QUEUE_NAME: ${{ vars.APP_QUEUE_NAME }}
+          QUEUE_ROUTING_KEY: ${{ vars.APP_QUEUE_ROUTING_KEY }}
       
       - name: Run command on remote server
         uses: appleboy/ssh-action@v0.1.8
