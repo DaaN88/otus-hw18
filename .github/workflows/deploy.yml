@@ -25,7 +25,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ vars.REGISTRY }}/${{ vars.APP_NAME }}
+          images: ${{ vars.REGISTRY }}/${{ vars.APP_IMAGE_NAME }}
           flavor: |
             latest=true
           tags: |
