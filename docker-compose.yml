@@ -12,6 +12,7 @@ services:
       - ./docker-settings/php/app.ini:/usr/local/etc/php/conf.d/app.ini
     networks:
       - otus
+    pull_policy: always
 
   nginx-hw18:
     image: nginx:alpine
