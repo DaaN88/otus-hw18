@@ -7,9 +7,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    working_dir: /src
+    working_dir: /project
     volumes:
-      - .env:/src/.env
       - ./docker-settings/php/app.ini:/usr/local/etc/php/conf.d/app.ini
     networks:
       - otus
