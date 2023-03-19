@@ -22,6 +22,7 @@ services:
       - '8080:80'
       - '443:443'
     volumes:
+      - ./:/project
       - ./docker-settings/nginx:/etc/nginx/conf.d/
     networks:
       - otus
@@ -38,6 +39,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
+      - ./:/project
       - ./docker-settings/mysql/conf:/etc/mysql/conf.d
     networks:
       - otus
@@ -59,6 +61,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     volumes:
+      - ./:/project
       - rabbitmq_data:/var/lib/rabbitmq/
       - rabbitmq_log:/var/log/rabbitmq/
     networks:
