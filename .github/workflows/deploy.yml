@@ -107,7 +107,7 @@ jobs:
             cd ${{ secrets.PROJECT_FOLDER }}
             pwd
             echo ${GHCR_PAT} | docker login ghcr.io -u ${GHCR_USERNAME} --password-stdin
-            docker-compose down
+            docker stop rabbitmq-hw18 phpmyadminer-hw18 otus-hw18 nginx-hw18 db-hw18
             docker-compose -p 'otus-hw18' up -d
             docker logout
         env:
