@@ -93,7 +93,7 @@ jobs:
             docker-compose -p 'otus-hw18' up -d
         env:
           GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
-          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+          GHCR_PAT: ${{ secrets.GIT_DOCKER_TOKEN }}
           APP_NAME: ${{ vars.APP_NAME }}
           APP_ENV: ${{ vars.APP_ENV }}
           APP_KEY: ${{ secrets.APP_KEY }}
