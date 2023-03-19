@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     working_dir: /project
     volumes:
-      - ./project/src:/project
+      - ./:/project
       - .env:/project/.env
       - ./docker-settings/php/app.ini:/usr/local/etc/php/conf.d/app.ini
     networks:
@@ -22,7 +22,7 @@ services:
     ports:
       - '127.0.0.1:8080:80'
     volumes:
-      - ./project/src:/project
+      - ./:/project
       - ./docker-settings/nginx:/etc/nginx/conf.d/
     networks:
       - otus
@@ -60,7 +60,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     volumes:
-      - ./project/src:/project
+      - ./:/project
       - rabbitmq_data:/var/lib/rabbitmq/
       - rabbitmq_log:/var/log/rabbitmq/
     networks:
