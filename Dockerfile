@@ -46,8 +46,5 @@ RUN apk add --no-cache -- \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY . /project
-COPY ./docker-settings/nginx /etc/nginx/conf.d/
-COPY ./docker-settings/php/app.ini /usr/local/etc/php/conf.d/app.ini
-COPY ./docker-settings/mysql/conf /etc/mysql/conf.d
 
 WORKDIR /project
