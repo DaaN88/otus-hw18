@@ -48,4 +48,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY . /project
 
 WORKDIR /project
-VOLUME . /project
+VOLUME /project
