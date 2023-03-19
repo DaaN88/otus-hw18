@@ -43,7 +43,57 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      
+      - name: Run command on remote server
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          envs: |
+            GHCR_USERNAME,
+            GHCR_PAT,
+            APP_NAME,
+            APP_ENV,
+            APP_KEY,
+            APP_DOWN,
+            APP_DEBUG,
+            APP_URL,
+            DB_CONNECTION,
+            DB_HOST,
+            DB_PORT,
+            DB_DATABASE,
+            DB_USERNAME,
+            DB_PASSWORD,
+            DB_CHARSET,
+            DB_COLLATION,
+            PROD_SERVER,
+            PROD_PORT,
+            PROD_USER,
+            SERVER_NAME,
+            SERVER_PORT,
+            SERVER_USER,
+            SERVER_PASSWORD,
+            APPLICATION_DIR,
+            APPLICATION_PATH,
+            RABBITMQ_HOST,
+            RABBITMQ_PORT,
+            RABBITMQ_USERNAME,
+            RABBITMQ_PASSWORD,
+            RABBITMQ_EXCHANGE,
+            RABBITMQ_EXCHANGE_TYPE,
+            QUEUE_NAME,
+            QUEUE_ROUTING_KEY
+          script: |
+            cd ${{ secrets.PROJECT_FOLDER }}
+            echo ${GHCR_PAT} | docker login ghcr.io -u ${GHCR_USERNAME} --password-stdin
+            docker-compose down
+            docker-compose -p 'otus-hw18' up -d
         env:
+          GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
           APP_NAME: ${{ vars.APP_NAME }}
           APP_ENV: ${{ vars.APP_ENV }}
           APP_KEY: ${{ secrets.APP_KEY }}
@@ -75,15 +125,3 @@ jobs:
           RABBITMQ_EXCHANGE_TYPE: ${{ vars.APP_RABBITMQ_EXCHANGE_TYPE }}
           QUEUE_NAME: ${{ vars.APP_QUEUE_NAME }}
           QUEUE_ROUTING_KEY: ${{ vars.APP_QUEUE_ROUTING_KEY }}
-      
-      - name: Run command on remote server
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
-            cd ${{ secrets.PROJECT_FOLDER }}
-            ls -la
