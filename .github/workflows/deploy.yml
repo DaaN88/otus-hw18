@@ -88,7 +88,7 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          source: "docker-compose.yml,.env"
+          source: "docker-compose.yml,.env,docker-settings/mysql/conf/custom.cnf,docker-settings/nginx/app.conf,docker-settings/php/app.ini"
           target: ${{ secrets.PROJECT_FOLDER }}
           overwrite: true
       
