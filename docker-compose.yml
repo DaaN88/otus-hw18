@@ -2,13 +2,10 @@ version: "3.8"
 
 services:
   app-hw18:
-    build:
-      dockerfile: Dockerfile
-      context: ./
-    image: otus-homework16
+    image: "ghcr.io/daan88/otus-hw18:latest"
     container_name: otus-hw18
     env_file:
-      - ./src/.env.example
+      - .env
     restart: unless-stopped
     working_dir: /project
     volumes:
