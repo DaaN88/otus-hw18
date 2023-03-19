@@ -47,4 +47,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 WORKDIR /project
 
-COPY ./ /project
+COPY src/ /project
