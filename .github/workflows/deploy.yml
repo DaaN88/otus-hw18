@@ -56,6 +56,44 @@ jobs:
           target: ${{ secrets.PROJECT_FOLDER }}
           overwrite: true
       
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_APP_NAME: ${{ vars.APP_NAME }}
+          envkey_APP_ENV: ${{ vars.APP_ENV }}
+          envkey_APP_KEY: ${{ secrets.APP_KEY }}
+          envkey_APP_DOWN: ${{ vars.APP_DOWN }}
+          envkey_APP_DEBUG: ${{ vars.APP_DEBUG }}
+          envkey_APP_URL: ${{ vars.APP_URL }}
+          envkey_DB_CONNECTION: ${{ vars.APP_DB_CONNECTION }}
+          envkey_DB_HOST: ${{ vars.APP_DB_HOST }}
+          envkey_DB_PORT: ${{ vars.APP_DB_PORT }}
+          envkey_DB_DATABASE: ${{ secrets.APP_DB_DATABASE }}
+          envkey_DB_USERNAME: ${{ secrets.APP_DB_USERNAME }}
+          envkey_DB_PASSWORD: ${{ secrets.APP_DB_PASSWORD }}
+          envkey_DB_CHARSET: ${{ vars.APP_DB_CHARSET }}
+          envkey_DB_COLLATION: ${{ vars.APP_DB_COLLATION }}
+          envkey_PROD_SERVER: ${{ secrets.APP_PROD_SERVER }}
+          envkey_PROD_PORT: ${{ secrets.APP_PROD_PORT }}
+          envkey_PROD_USER: ${{ secrets.APP_PROD_USER }}
+          envkey_SERVER_NAME: ${{ secrets.APP_SERVER_NAME }}
+          envkey_SERVER_PORT: ${{ secrets.APP_SERVER_PORT }}
+          envkey_SERVER_USER: ${{ vars.APP_SERVER_USER }}
+          envkey_SERVER_PASSWORD: ${{ secrets.APP_SERVER_PASSWORD }}
+          envkey_APPLICATION_DIR: ${{ secrets.APP_APPLICATION_DIR }}
+          envkey_APPLICATION_PATH: ${{ secrets.APP_APPLICATION_PATH }}
+          envkey_RABBITMQ_HOST: ${{ vars.APP_RABBITMQ_HOST }}
+          envkey_RABBITMQ_PORT: ${{ vars.APP_RABBITMQ_PORT }}
+          envkey_RABBITMQ_USERNAME: ${{ secrets.APP_RABBITMQ_USERNAME }}
+          envkey_RABBITMQ_PASSWORD: ${{ secrets.APP_RABBITMQ_PASSWORD }}
+          envkey_RABBITMQ_EXCHANGE: ${{ vars.APP_RABBITMQ_EXCHANGE }}
+          envkey_RABBITMQ_EXCHANGE_TYPE: ${{ vars.APP_RABBITMQ_EXCHANGE_TYPE }}
+          envkey_QUEUE_NAME: ${{ vars.APP_QUEUE_NAME }}
+          envkey_QUEUE_ROUTING_KEY: ${{ vars.APP_QUEUE_ROUTING_KEY }}
+          directory: ${{ secrets.PROJECT_FOLDER }}
+          file_name: .env
+          fail_on_empty: false
+      
       - name: Run command on remote server
         uses: appleboy/ssh-action@v0.1.8
         with:
@@ -66,38 +104,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           envs: |
             GHCR_USERNAME,
-            GHCR_PAT,
-            APP_NAME,
-            APP_ENV,
-            APP_KEY,
-            APP_DOWN,
-            APP_DEBUG,
-            APP_URL,
-            DB_CONNECTION,
-            DB_HOST,
-            DB_PORT,
-            DB_DATABASE,
-            DB_USERNAME,
-            DB_PASSWORD,
-            DB_CHARSET,
-            DB_COLLATION,
-            PROD_SERVER,
-            PROD_PORT,
-            PROD_USER,
-            SERVER_NAME,
-            SERVER_PORT,
-            SERVER_USER,
-            SERVER_PASSWORD,
-            APPLICATION_DIR,
-            APPLICATION_PATH,
-            RABBITMQ_HOST,
-            RABBITMQ_PORT,
-            RABBITMQ_USERNAME,
-            RABBITMQ_PASSWORD,
-            RABBITMQ_EXCHANGE,
-            RABBITMQ_EXCHANGE_TYPE,
-            QUEUE_NAME,
-            QUEUE_ROUTING_KEY
+            GHCR_PAT
           script: |
             cd ${{ secrets.PROJECT_FOLDER }}
             echo ${GHCR_PAT} | docker login ghcr.io -u ${GHCR_USERNAME} --password-stdin
@@ -107,34 +114,3 @@ jobs:
         env:
           GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
           GHCR_PAT: ${{ secrets.GIT_DOCKER_TOKEN }}
-          APP_NAME: ${{ vars.APP_NAME }}
-          APP_ENV: ${{ vars.APP_ENV }}
-          APP_KEY: ${{ secrets.APP_KEY }}
-          APP_DOWN: ${{ vars.APP_DOWN }}
-          APP_DEBUG: ${{ vars.APP_DEBUG }}
-          APP_URL: ${{ vars.APP_URL }}
-          DB_CONNECTION: ${{ vars.APP_DB_CONNECTION }}
-          DB_HOST: ${{ vars.APP_DB_HOST }}
-          DB_PORT: ${{ vars.APP_DB_PORT }}
-          DB_DATABASE: ${{ secrets.APP_DB_DATABASE }}
-          DB_USERNAME: ${{ secrets.APP_DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.APP_DB_PASSWORD }}
-          DB_CHARSET: ${{ vars.APP_DB_CHARSET }}
-          DB_COLLATION: ${{ vars.APP_DB_COLLATION }}
-          PROD_SERVER: ${{ secrets.APP_PROD_SERVER }}
-          PROD_PORT: ${{ secrets.APP_PROD_PORT }}
-          PROD_USER: ${{ secrets.APP_PROD_USER }}
-          SERVER_NAME: ${{ secrets.APP_SERVER_NAME }}
-          SERVER_PORT: ${{ secrets.APP_SERVER_PORT }}
-          SERVER_USER: ${{ vars.APP_SERVER_USER }}
-          SERVER_PASSWORD: ${{ secrets.APP_SERVER_PASSWORD }}
-          APPLICATION_DIR: ${{ secrets.APP_APPLICATION_DIR }}
-          APPLICATION_PATH: ${{ secrets.APP_APPLICATION_PATH }}
-          RABBITMQ_HOST: ${{ vars.APP_RABBITMQ_HOST }}
-          RABBITMQ_PORT: ${{ vars.APP_RABBITMQ_PORT }}
-          RABBITMQ_USERNAME: ${{ secrets.APP_RABBITMQ_USERNAME }}
-          RABBITMQ_PASSWORD: ${{ secrets.APP_RABBITMQ_PASSWORD }}
-          RABBITMQ_EXCHANGE: ${{ vars.APP_RABBITMQ_EXCHANGE }}
-          RABBITMQ_EXCHANGE_TYPE: ${{ vars.APP_RABBITMQ_EXCHANGE_TYPE }}
-          QUEUE_NAME: ${{ vars.APP_QUEUE_NAME }}
-          QUEUE_ROUTING_KEY: ${{ vars.APP_QUEUE_ROUTING_KEY }}
