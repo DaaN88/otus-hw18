@@ -61,10 +61,13 @@ services:
       - "15672:15672"
     volumes:
       - ./:/project
-      - ./volumes/rabbitmq/data/:/var/lib/rabbitmq
-      - ./volumes/rabbitmq/log/:/var/log/rabbitmq
+      - rabbitmq_data:/var/lib/rabbitmq/
+      - rabbitmq_log:/var/log/rabbitmq/
     networks:
       - otus
+volumes:
+  rabbitmq_data:
+  rabbitmq_log:
 
 networks:
   otus:
