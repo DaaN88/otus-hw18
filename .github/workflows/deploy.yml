@@ -90,6 +90,7 @@ jobs:
           envkey_RABBITMQ_EXCHANGE_TYPE: ${{ vars.APP_RABBITMQ_EXCHANGE_TYPE }}
           envkey_QUEUE_NAME: ${{ vars.APP_QUEUE_NAME }}
           envkey_QUEUE_ROUTING_KEY: ${{ vars.APP_QUEUE_ROUTING_KEY }}
+          directory: /home/project/otus
           file_name: .env
       
       - name: Run command on remote server
