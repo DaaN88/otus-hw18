@@ -49,7 +49,7 @@ services:
     container_name: phpmyadminer-hw18
     restart: unless-stopped
     ports:
-      - '9991:8080'
+      - '9991:80'
     depends_on:
       - db-hw18
     networks:
