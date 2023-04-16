@@ -22,7 +22,7 @@ services:
     container_name: nginx-hw18
     restart: unless-stopped
     ports:
-      - '8010:80'
+      - '80:80'
     volumes:
       - ./:/project
       - ./../docker-settings/nginx:/etc/nginx/conf.d/
