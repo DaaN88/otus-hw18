@@ -21,7 +21,8 @@
             // Begin Swagger UI call region
             console.log(window.location.pathname);
             const ui = SwaggerUIBundle({
-                url: window.location.protocol + "//" + window.location.hostname + ":8010/pages/openapi.json",
+                // было + window.location.hostname + ":8010/pages/openapi.json" - тут нужна переменная для URL
+                url: window.location.protocol + "//" + window.location.hostname + "/pages/openapi.json",
                 dom_id: '#swagger-ui',
                 deepLinking: true,
                 presets: [
