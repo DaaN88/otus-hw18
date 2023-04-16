@@ -20,6 +20,6 @@ app()->get(pattern: '/api-doc', handler: function () {
 
         echo "Success";
     } catch (Exception $exception) {
-        echo $exception->getMessage();
+        var_dump($exception->getMessage());
     }
 });
