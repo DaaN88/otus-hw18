@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Otus homework 17 API",
+        "title": "Otus homework 18 API",
         "contact": {
             "email": "ant-shvedov@yandex.ru"
         },
@@ -9,7 +9,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8010"
+            "url": "http://localhost"
         }
     ],
     "paths": {
